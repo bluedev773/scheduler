@@ -7,7 +7,7 @@ export default function InterviewerList(props) {
 
     const { interviewers } = props;
 
-    const parsedInterviewers = interviewers.map((interviewer) => Array.isArray(interviewers) && <InterviewerListItem key={interviewer.id} {...interviewer} selected={interviewer.id === props.interviewer} setInterviewer={() => props.setInterviewer(interviewer.id)}/>);
+    const parsedInterviewers = interviewers.map((interviewer) => Array.isArray(interviewers) && <InterviewerListItem key={interviewer.id} {...interviewer} selected={interviewer.id === props.value} setInterviewer={() => props.onChange(interviewer.id)}/>);
 
     return(
         <section className="interviewers">
