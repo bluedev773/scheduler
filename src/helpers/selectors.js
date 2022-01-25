@@ -1,6 +1,5 @@
 
 export function getAppointmentsForDay(state, day) {
-
     if(state.days.length === 0) {
         return [];
     }
@@ -15,17 +14,18 @@ export function getAppointmentsForDay(state, day) {
         const filtered = appointmentsAsArray.filter(appointment => appointment.id === appointmentID);
         arrOfAppointments.push(filtered[0]);
     })
-
     return arrOfAppointments;
 
   }
 
-export function getInterview(state, interview) {
-    if(interview === null) return null;
-    const parsedInterview = interview;
-    parsedInterview.interviewer = state.interviewers[interview.interviewer.toString()];
-    return parsedInterview;
+export  function getInterview(state, interview) {
+    if(!interview) return null;
+    const filteredInterview = {};
+     filteredInterview.student = interview.student;
+     filteredInterview.interviewer = state.interviewers[interview.interviewer];
+    return filteredInterview;
 }
+
 
 export function getInterviewersForDay(state, day) {
 
@@ -36,6 +36,7 @@ export function getInterviewersForDay(state, day) {
     if(filteredByDay.length === 0) {
         return [];
     }
+
     const arrOfInterviewerIDs = filteredByDay[0].interviewers;
     const arrOfInterviewers = [];
     const interviewersAsArray = Object.values(state.interviewers);
@@ -43,7 +44,6 @@ export function getInterviewersForDay(state, day) {
         const filtered = interviewersAsArray.filter(interviewer => interviewer.id === interviewerID);
         arrOfInterviewers.push(filtered[0]);
     })
-
+    //console.log("array of interviewers:", arrOfInterviewers);
     return arrOfInterviewers;
-
   }
