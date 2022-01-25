@@ -1,5 +1,5 @@
 import { useState } from "react";
-
+//TODO: change to use prev
 export default function useVisualMode(initialMode) {
     const [mode, setMode] = useState(initialMode);
     const [history, setHistory] = useState([initialMode]);
@@ -21,7 +21,6 @@ export default function useVisualMode(initialMode) {
         newHistory.pop();
         setHistory(newHistory);
         setMode(newHistory[newHistory.length - 1]);
-        
     }
     
 
