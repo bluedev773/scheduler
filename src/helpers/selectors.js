@@ -29,13 +29,11 @@ export  function getInterview(state, interview) {
 
 export function getInterviewersForDay(state, day) {
 
-    if(state.days.length === 0) {
-        return [];
-    }
     const filteredByDay = state.days.filter(dayOfTheWeek => dayOfTheWeek.name === day);
-    if(filteredByDay.length === 0) {
+
+    if(state.days.length === 0 || filteredByDay.length === 0){
         return [];
-    }
+      }
 
     const arrOfInterviewerIDs = filteredByDay[0].interviewers;
     const arrOfInterviewers = [];
@@ -44,6 +42,5 @@ export function getInterviewersForDay(state, day) {
         const filtered = interviewersAsArray.filter(interviewer => interviewer.id === interviewerID);
         arrOfInterviewers.push(filtered[0]);
     })
-    //console.log("array of interviewers:", arrOfInterviewers);
     return arrOfInterviewers;
   }
