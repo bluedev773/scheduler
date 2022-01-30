@@ -1,4 +1,15 @@
 # Interview Scheduler
+An interview scheduler application in which a user can create, edit, and delete interview appointments.
+
+## Final Product
+
+!["Show interview"]()
+
+!["Add interview"]()
+
+!["Delete interview"]()
+
+!["Mobile interview"]()
 
 ## Setup
 
