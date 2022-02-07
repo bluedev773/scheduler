@@ -26,11 +26,16 @@ export default function Appointment(props) {
     );
 
     function save(name, interviewer) {
+
         const interview = {
             student: name,
             interviewer
         };
         transition(SAVING);
+        if(!interviewer) {
+            transition(ERROR_SAVE, true)
+            return
+        }
         props.bookInterview(props.id, interview)
         .then(() => {transition(SHOW)})
         .catch(error => transition(ERROR_SAVE, true));
